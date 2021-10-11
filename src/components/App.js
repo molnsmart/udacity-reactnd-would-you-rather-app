@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <p>Hello App</p>
-      </div>
+        <button type="button" className="btn btn-primary">Hello Bootstrap</button>      </div>
     );
   }
 
