@@ -4,6 +4,7 @@ import { formatUserObjectList, setUserIdLocalStorage, } from '../utils/helpers'
 import { setAuthedUser } from '../actions/authedUser'
 import { withRouter } from "react-router";
 import LogOut from "../components/User/Logout"
+import Avatar from '../components/User/Avatar';
 class SignInPage extends Component {
   state = {
     selectedUserId: null,
@@ -67,7 +68,7 @@ class SignInPage extends Component {
                     this.props.users.map((user) => {
                       return (
                         <button key={user.id} className="dropdown-item" type="button" onClick={(e) => this.selectUser(e, user.id)}>
-                          <img src={user.avatarURL} className="avatar" alt="avatar"></img>
+                          <Avatar AvatarUrl={user.avatarURL} Size="small"></Avatar>
                           <span className="ml-2">{user.name}</span>
                         </button>
                       )

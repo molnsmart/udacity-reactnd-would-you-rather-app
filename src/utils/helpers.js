@@ -9,6 +9,15 @@ export function formatUserObjectList(users) {
   }
   return userList
 }
+export function formatQuestionObjectList(questions) {
+  let questionList = []
+  if (Object.keys(questions).length !== 0) {
+    Object.values(questions).forEach(val => {
+      questionList.push(val)
+    });
+  }
+  return questionList
+}
 export function removeUserIdFromLocalStorage() {
   localStorage.removeItem(USER_ID_LOCAL_STORAGE)
 }
