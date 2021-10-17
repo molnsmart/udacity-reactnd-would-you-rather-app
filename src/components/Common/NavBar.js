@@ -21,7 +21,7 @@ class NavBar extends Component {
         {/* <div></div> */}
         <ul className="nav nav-tabs justify-content-center">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/">Home</NavLink>
+            <NavLink className="nav-link" to="/" exact={true}>Home</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/question/new">New Question</NavLink>
@@ -42,7 +42,7 @@ class NavBar extends Component {
                 <Avatar AvatarUrl={this.getUser().AvatarUrl} Size="small"></Avatar>
               </li>
               <li className="p-3">
-                <NavLink className="nav-link" to="/signin">Logout</NavLink>
+                <NavLink to="/signin" exact={true}>Logout</NavLink>
               </li>
             </ul>
             : <ul className="nav">
@@ -54,7 +54,7 @@ class NavBar extends Component {
                 {/* <button type="button" className="btn btn-link w-100" onClick={(e) => this.gotoSignInPage()}>
                     Login
                   </button> */}
-                <NavLink className="nav-link" to="/signin">Login</NavLink>
+                <NavLink className="nav-link" to="/signin" exact={true}>Login</NavLink>
               </li>
             </ul>
           }
