@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
-class NewQuestionPage extends Component {
+class AddQuestionPage extends Component {
 
 
   render() {
+    // add
+    // questions/question_id
+
     console.log(this.props.authedUser)
     return (
       <div className="container">
@@ -47,4 +50,4 @@ function mapStateToProps({ users, authedUser }) {
     authedUser: authedUser
   }
 }
-export default withRouter(connect(mapStateToProps)(NewQuestionPage));
+export default withRouter(connect(mapStateToProps)(AddQuestionPage));

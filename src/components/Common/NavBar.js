@@ -24,7 +24,7 @@ class NavBar extends Component {
             <NavLink className="nav-link" to="/" exact={true}>Home</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/question/new">New Question</NavLink>
+            <NavLink className="nav-link" to="/add">New Question</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/leaderboard">Leaderboard</NavLink>

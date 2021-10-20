@@ -18,6 +18,20 @@ export function formatQuestionObjectList(questions) {
   }
   return questionList
 }
+export function getUser(userList, id) {
+  let uList = formatUserObjectList(userList)
+  return uList.filter(u => u.id === id)[0]
+}
+export function findQuestion(questions, id) {
+  console.log(questions)
+  if (questions !== undefined && questions !== null && id !== undefined) {
+    let questionList = formatQuestionObjectList(questions)
+    console.log(questionList)
+    console.log(id)
+    return questionList.filter(q => q.id.toUpperCase() === id.toUpperCase())[0]
+  }
+  return null;
+}
 export function removeUserIdFromLocalStorage() {
   localStorage.removeItem(USER_ID_LOCAL_STORAGE)
 }

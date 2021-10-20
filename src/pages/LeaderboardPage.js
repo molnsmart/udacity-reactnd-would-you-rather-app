@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatUserObjectList, } from '../utils/helpers'
+import { formatUserObjectList } from '../utils/helpers'
 import { withRouter } from "react-router";
 class LeaderboardPage extends Component {
 

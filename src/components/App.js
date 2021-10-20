@@ -12,7 +12,8 @@ import NavBar from './Common/NavBar';
 import NotFoundPage from '../pages/NotFoundPage'
 import SignInPage from '../pages/SignInPage';
 import MainPage from '../pages/MainPage';
-import NewQuestionPage from '../pages/NewQuestionPage';
+import AddQuestionPage from '../pages/AddQuestionPage';
+import QuestionPage from '../pages/QuestionPage';
 import { Fragment } from 'react';
 import LeaderboardPage from '../pages/LeaderboardPage';
 
@@ -21,11 +22,21 @@ import LeaderboardPage from '../pages/LeaderboardPage';
 const history = createHistory();
 
 class App extends Component {
-
+  isAuthenticated() {
+    if (this.props.authedUser !== null) {
+      return true;
+    }
+    return false;
+  }
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
   render() {
+    if (!this.isAuthenticated()) {
+      return (
+        <SignInPage />
+      )
+    }
     return (
       <div className="app">
         <Router history={history}>
@@ -38,8 +49,11 @@ class App extends Component {
               <Route exact path="/signin">
                 <SignInPage history={this.props.history}></SignInPage>
               </Route>
-              <Route exact path="/question/new">
-                <NewQuestionPage history={this.props.history}></NewQuestionPage>
+              <Route exact path="/add">
+                <AddQuestionPage history={this.props.history}></AddQuestionPage>
+              </Route>
+              <Route path="/questions/:questionId">
+                <QuestionPage history={this.props.history}></QuestionPage>
               </Route>
               <Route exact path="/leaderboard">
                 <LeaderboardPage></LeaderboardPage>
@@ -51,9 +65,14 @@ class App extends Component {
           </Fragment>
         </Router>
       </div>
-    );
+    )
   }
 
 }
+function mapStateToProps({ users, authedUser }) {
+  return {
+    authedUser: authedUser
+  }
+}
 
-export default connect()(App);
+export default connect(mapStateToProps)(App);
