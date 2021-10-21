@@ -1,7 +1,5 @@
-import { RECEIVE_QUESTIONS, ADD_VOTE_OPTION_ONE, ADD_VOTE_OPTION_TWO } from "../actions/questions"
+import { RECEIVE_QUESTIONS, ADD_VOTE_OPTION_ONE, ADD_VOTE_OPTION_TWO, ADD_QUESTION } from "../actions/questions"
 export default function questions(state = {}, action) {
-  console.log("hello")
-  console.log(action)
   switch (action.type) {
     case RECEIVE_QUESTIONS:
       return {
@@ -21,6 +19,12 @@ export default function questions(state = {}, action) {
       return {
         ...state,
         [action.question.id]: action.question
+      }
+    case ADD_QUESTION:
+      let questionId = Object.keys(action.question)
+      return {
+        ...state,
+        [questionId]: action.question[questionId]
       }
     default:
       return state

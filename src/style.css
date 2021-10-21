@@ -76,3 +76,13 @@
 .react-tabs__tab-list{
   margin-bottom: 0px!important;
 }
+.new-question-textarea{
+  height:40px!important;
+  padding:8px;
+  overflow:auto
+}
+
+.middle{
+  border-right: 1px solid #000;
+  border-left: 1px solid #000;
+}

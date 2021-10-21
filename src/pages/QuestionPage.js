@@ -17,10 +17,7 @@ class QuestionPage extends Component {
   }
 
   userHasAnswered(question) {
-    if (question.optionTwo.votes.includes(this.props.authedUser)) {
-      return true
-    }
-    if (question.optionOne.votes.includes(this.props.authedUser)) {
+    if (question.optionTwo.votes.includes(this.props.authedUser) || question.optionOne.votes.includes(this.props.authedUser)) {
       return true
     }
     return false
@@ -30,14 +27,18 @@ class QuestionPage extends Component {
     if (this.questionsLoaded()) {
       let question = findQuestion(this.props.questions, this.props.match.params.questionId)
       let user = getUser(this.props.users, this.props.authedUser)
-      if (this.userHasAnswered(question)) {
-        return (
-          <Summary Question={question} User={user}></Summary>
-        )
+      if (question !== undefined) {
+        if (this.userHasAnswered(question)) {
+          return (
+            <Summary Question={question} User={user}></Summary>
+          )
+        } else {
+          return (
+            <Answer User={user} Question={question} Dispatch={this.props.dispatch} AuthedUser={this.props.authedUser}></Answer >
+          )
+        }
       } else {
-        return (
-          <Answer User={user} Question={question} Dispatch={this.props.dispatch} AuthedUser={this.props.authedUser}></Answer >
-        )
+        this.props.history.push("/notfound");
       }
     } else {
       this.props.history.push("/notfound");
