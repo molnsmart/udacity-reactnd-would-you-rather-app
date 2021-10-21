@@ -1,68 +1,109 @@
 import React, { Component } from 'react'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import { connect } from 'react-redux'
-import { formatUserObjectList, formatQuestionObjectList } from '../../utils/helpers'
+import { formatUserObjectList, getUser } from '../../utils/helpers'
 import { withRouter } from "react-router";
+import Question from './Question';
 class QuestionList extends Component {
-
-  getAnsweredQuestionList() {
-    let questionList = formatUserObjectList(this.props.questions)
-    let result = questionList.filter(x => (x.optionOne.votes.length > 0 || x.optionTwo.votes.length > 0))
-    return result
+  state = {
+    questionListWithAnswers: [],
+    questionListWithOoutAnswers: [],
+    loaded: false,
   }
+  componentDidMount() {
+    this.updateQuestionLists();
+  }
+  hideQuestionListWithAnswers() {
 
+  }
+  updateQuestionLists() {
+    let questionList = formatUserObjectList(this.props.questions)
+    let questionsWithAnswers = questionList.filter(x => (x.optionOne.votes.length > 0 || x.optionTwo.votes.length > 0))
+    let questionsWithOutAnswers = questionList.filter(x => (x.optionOne.votes.length === 0 && x.optionTwo.votes.length === 0))
+    this.setState(
+      {
+        questionListWithAnswers: questionsWithAnswers,
+        questionListWithOutAnswers: questionsWithOutAnswers,
+        loaded: true
+      }
+    )
+  }
   render() {
-    let myQuestions = this.getAnsweredQuestionList()
-    return (
-      <div>
-        <div class="row">
-          <div class="col-3"></div>
-          <div class="col-6 border">
-            <div class="row">
-              <div class="col-6 border text-center p-0 m-0">
-                <button type="button" class="btn btn-link w-100 active">
-                  <h6 class="m-3">
-                    Unanswered Questions
-                  </h6>
-                </button>
-              </div>
-              <div class="col-6 border text-center p-0 m-0">
-                <button type="button" class="btn btn-link btn-link-custom w-100">
-                  <h6 class="m-3">
-                    Unanswered Questions
-                  </h6>
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                {
-                  myQuestions.map(element => {
-                    return (
-                      <div class="card mt-3">
-                        <div class="card-header">
-                          <h5>{element.author} asks:</h5>
-                        </div>
-                        <div class="card-body">
-                          <h5 class="card-title">Would you rather</h5>
-                          <p class="card-text">{element.optionOne.text}</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+    if (this.state.loaded) {
+      return (
+        <div>
+          <div class="row mt-3">
+            <div class="col-4"></div>
+            <div class="col-4 mt-0">
+              <Tabs>
+                <TabList>
+                  <Tab><h5 className="text-center">Unanswered Questions</h5></Tab>
+                  <Tab><h5 className="text-center">Answered Questions</h5></Tab>
+                </TabList>
+                <div className="col-12 border">
+                  <TabPanel>
+                    <div class="row mt-5">
+                      {/* <div class="col-12">
+                        {
+                          this.state.questionListWithAnswers.map(question => {
+                            let user = getUser(this.props.users, question.author)
+                            return (
+                              <Question Question={question} Author={user}></Question>
+                            )
+                          })
+                        }
+                      </div> */}
+                      <div class="col-12">
+                        {
+                          formatUserObjectList(this.props.questions).filter(x => (x.optionOne.votes.length === 0 && x.optionTwo.votes.length === 0)).map(
+                            question => {
+                              let user = getUser(this.props.users, question.author)
+                              return (
+                                <Question Question={question} Author={user}></Question>
+                              )
+                            }
+                          )
+                        }
                       </div>
-                    )
-                  })
-                }
-              </div>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div class="row mt-5 mb-3">
+                      {/* <div className="col-12">
+                        {
+                          this.state.questionListWithOutAnswers.map(question => {
+                            let user = getUser(this.props.users, question.author)
+                            return (
+                              <Question Question={question} Author={user}></Question>
+                            )
+                          })
+                        }
+                      </div> */}
+                      {
+                        formatUserObjectList(this.props.questions).filter(x => (x.optionOne.votes.length > 0 || x.optionTwo.votes.length > 0)).map(
+                          question => {
+                            let user = getUser(this.props.users, question.author)
+                            return (
+                              <Question Question={question} Author={user}></Question>
+                            )
+                          }
+                        )
+                      }
+                    </div>
+                  </TabPanel>
+                </div>
+
+              </Tabs>
             </div>
           </div>
-          <div class="col-3"></div>
-
-
+          <div class="col-4"></div>
         </div>
-        <div class="col-12">
+      )
+    } else {
+      return null
+    }
 
-        </div>
-      </div>
-    )
   }
 
 }

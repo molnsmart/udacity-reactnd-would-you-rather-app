@@ -66,3 +66,13 @@
   margin-top:80px;
   height: 150px;
 }
+.react-tabs__tab{
+  width:50%;
+}
+.react-tabs__tab--selected{
+  width:50%!important;
+  background-color: #f8f9fa!important;
+}
+.react-tabs__tab-list{
+  margin-bottom: 0px!important;
+}
