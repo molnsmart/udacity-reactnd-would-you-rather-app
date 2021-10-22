@@ -31,6 +31,14 @@ let users = {
       "6ni6ok3ym7mf1p33lnez": 'optionTwo'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+  },
+  tomvad: {
+    id: 'tomvad',
+    name: 'Tommy Vadman',
+    avatarURL: 'https://img.tradera.net/images/596/314487596_8f1b27c6-c493-4655-8da2-b579217e1980.jpg',
+    answers: {
+    },
+    questions: []
   }
 }
 

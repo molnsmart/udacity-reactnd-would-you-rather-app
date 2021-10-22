@@ -47,6 +47,17 @@ export function userIsLoggedInFromLocalStorage() {
   }
   return true;
 }
+
+export function getUserStats(user, questionList) {
+  return {
+    answeredQuestions: 4,
+    createdQuestions: 3,
+    score: Math.floor(Math.random() * 10),
+    user: user,
+    userId: user.id
+  }
+}
+
 export function generateQuestion(userId, optionOne, optionTwo) {
   let id = Math.random().toString(36).substr(2, 11);
   return {
