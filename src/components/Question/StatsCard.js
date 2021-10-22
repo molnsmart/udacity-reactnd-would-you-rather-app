@@ -26,7 +26,11 @@ class StatsCard extends Component {
         </div>
       )
     }
-    return null;
+    return (
+      <div className="triangle-white">
+        <p className="ml-2 mt-2">{index + 1}</p>
+      </div>
+    )
   }
   render() {
     let statsIndex = this.props.StatsList.findIndex(i => i.userId === this.props.Stats.userId);

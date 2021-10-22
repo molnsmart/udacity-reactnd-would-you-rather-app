@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import {
-  BrowserRouter as Router,
+  Router,
   Route,
   Switch
 } from "react-router-dom";
-import createHistory from 'history/createBrowserHistory';
-
+import history from "./history";
 import NavBar from './Common/NavBar';
 import NotFoundPage from '../pages/NotFoundPage'
 import SignInPage from '../pages/SignInPage';
@@ -19,7 +18,6 @@ import LeaderboardPage from '../pages/LeaderboardPage';
 
 
 
-const history = createHistory();
 
 class App extends Component {
   isAuthenticated() {
