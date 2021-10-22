@@ -15,10 +15,8 @@ class NavBar extends Component {
 
 
   render() {
-    console.log(this.getUser())
     return (
       <nav className="navbar navbar-light bg-light">
-        {/* <div></div> */}
         <ul className="nav nav-tabs justify-content-center">
           <li className="nav-item">
             <NavLink className="nav-link" to="/" exact={true}>Home</NavLink>
@@ -38,7 +36,6 @@ class NavBar extends Component {
                 <p>Welcome {this.getUser().name}</p>
               </li>
               <li className="p-3">
-                {/* <img src="https://img.tradera.net/images/596/314487596_8f1b27c6-c493-4655-8da2-b579217e1980.jpg" className="avatar ml-4" alt="avatar"></img> */}
                 <Avatar AvatarUrl={this.getUser().AvatarUrl} Size="small"></Avatar>
               </li>
               <li className="p-3">
@@ -51,9 +48,6 @@ class NavBar extends Component {
               <li className="p-3">
               </li>
               <li className="p-3">
-                {/* <button type="button" className="btn btn-link w-100" onClick={(e) => this.gotoSignInPage()}>
-                    Login
-                  </button> */}
                 <NavLink className="nav-link" to="/signin" exact={true}>Login</NavLink>
               </li>
             </ul>

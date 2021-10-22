@@ -6,9 +6,6 @@ class Answer extends Component {
     optionOne: true,
     optionTwo: false,
   }
-  componentDidMount() {
-    console.log(this.props)
-  }
   handleChange = (e) => {
 
     if (e.target.value === 'optionTwo') {

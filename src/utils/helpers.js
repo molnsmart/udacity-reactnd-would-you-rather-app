@@ -23,11 +23,8 @@ export function getUser(userList, id) {
   return uList.filter(u => u.id === id)[0]
 }
 export function findQuestion(questions, id) {
-  console.log(questions)
   if (questions !== undefined && questions !== null && id !== undefined) {
     let questionList = formatQuestionObjectList(questions)
-    console.log(questionList)
-    console.log(id)
     return questionList.filter(q => q.id.toUpperCase() === id.toUpperCase())[0]
   }
   return null;

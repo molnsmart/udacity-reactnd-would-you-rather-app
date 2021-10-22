@@ -4,7 +4,6 @@ class Avatar extends Component {
 
 
   render() {
-    console.log(this.props)
     if (this.props.Size !== undefined) {
       if (this.props.AvatarUrl !== undefined) {
         if (this.props.Size === 'large') {

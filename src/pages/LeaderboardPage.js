@@ -9,7 +9,7 @@ class LeaderboardPage extends Component {
   }
   scoreBoard() {
     let scoreBoard = []
-    this.props.users.map(u => {
+    this.props.users.forEach(u => {
       scoreBoard.push(formatUserStats(u, this.props.questions))
     })
     return scoreBoard.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
@@ -24,7 +24,7 @@ class LeaderboardPage extends Component {
             {
               statsList.map(stats => {
                 return (
-                  <StatsCard Stats={stats} StatsList={statsList}></StatsCard>
+                  <StatsCard key={stats.userId} Stats={stats} StatsList={statsList}></StatsCard>
                 )
               })
             }

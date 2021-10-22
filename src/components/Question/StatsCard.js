@@ -34,8 +34,8 @@ class StatsCard extends Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div class="card mt-3">
-              <div class="card-body">
+            <div className="card mt-3">
+              <div className="card-body">
                 {this.getTrophy(statsIndex)}
                 <div className="row">
                   <div className="col-4 border-right">
@@ -69,7 +69,7 @@ class StatsCard extends Component {
                       </div>
                       <div className="col-2"></div>
                       <div className="col-10 ml-4 border text-center p-3">
-                        <div class="circle-score"><p className="mt-2 d-inline-block">{this.props.Stats.score}</p></div>
+                        <div className="circle-score"><p className="mt-2 d-inline-block">{this.props.Stats.score}</p></div>
                       </div>
                       <div className="col-2"></div>
                     </div>
