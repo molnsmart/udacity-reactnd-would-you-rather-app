@@ -11,8 +11,7 @@ class Summary extends Component {
 
     let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
     let votes = option.votes.length
-    let result = (votes / totalVotes) * 100
-    return result
+    return ((votes / totalVotes) * 100).toFixed()
   }
   render() {
 

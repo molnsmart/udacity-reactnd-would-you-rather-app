@@ -26,7 +26,7 @@ class QuestionPage extends Component {
   render() {
     if (this.questionsLoaded()) {
       let question = findQuestion(this.props.questions, this.props.match.params.questionId)
-      let user = getUser(this.props.users, this.props.authedUser)
+      let user = getUser(this.props.users, question.author)
       if (question !== undefined) {
         if (this.userHasAnswered(question)) {
           return (

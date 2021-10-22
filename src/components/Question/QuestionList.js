@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { connect } from 'react-redux'
-import { formatUserObjectList, getUser } from '../../utils/helpers'
+import { formatUserObjectList, getUser, formatQuestionObjectList } from '../../utils/helpers'
 import { withRouter } from "react-router";
 import Question from './Question';
 class QuestionList extends Component {
   render() {
+
     return (
       <div>
         <div class="row mt-3">
@@ -22,14 +23,17 @@ class QuestionList extends Component {
                   <div class="row mt-5">
                     <div class="col-12">
                       {
-                        formatUserObjectList(this.props.questions).filter(x => (x.optionOne.votes.length === 0 && x.optionTwo.votes.length === 0)).map(
-                          question => {
-                            let user = getUser(this.props.users, question.author)
-                            return (
-                              <Question Question={question} Author={user}></Question>
-                            )
-                          }
-                        )
+                        formatQuestionObjectList(
+                          this.props.questions)
+                          .filter(x => (!x.optionOne.votes.includes(this.props.authedUser) && !x.optionTwo.votes.includes(this.props.authedUser)))
+                          .map(
+                            question => {
+                              let user = getUser(this.props.users, question.author)
+                              return (
+                                <Question Question={question} Author={user}></Question>
+                              )
+                            }
+                          )
                       }
                     </div>
                   </div>
@@ -37,14 +41,17 @@ class QuestionList extends Component {
                 <TabPanel>
                   <div class="row mt-5 mb-3">
                     {
-                      formatUserObjectList(this.props.questions).filter(x => (x.optionOne.votes.length > 0 || x.optionTwo.votes.length > 0)).map(
-                        question => {
-                          let user = getUser(this.props.users, question.author)
-                          return (
-                            <Question Question={question} Author={user}></Question>
-                          )
-                        }
-                      )
+                      formatQuestionObjectList(
+                        this.props.questions)
+                        .filter(x => (x.optionOne.votes.includes(this.props.authedUser) || x.optionTwo.votes.includes(this.props.authedUser)))
+                        .map(
+                          question => {
+                            let user = getUser(this.props.users, question.author)
+                            return (
+                              <Question Question={question} Author={user}></Question>
+                            )
+                          }
+                        )
                     }
                   </div>
                 </TabPanel>
