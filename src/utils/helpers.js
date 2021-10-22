@@ -48,11 +48,15 @@ export function userIsLoggedInFromLocalStorage() {
   return true;
 }
 
-export function getUserStats(user, questionList) {
+export function formatUserStats(user, questionList) {
+  let userQuestionList = formatQuestionObjectList(questionList).filter(q => q.author === user.id || q.optionOne.votes.includes(user.id) || q.optionTwo.votes.includes(user.id))
+  let answeredQuestions = userQuestionList.filter(q => q.optionOne.votes.includes(user.id) || q.optionTwo.votes.includes(user.id)).length
+  let createdQuestions = userQuestionList.filter(q => q.author === user.id).length
+  let score = answeredQuestions + createdQuestions
   return {
-    answeredQuestions: 4,
-    createdQuestions: 3,
-    score: Math.floor(Math.random() * 10),
+    answeredQuestions: answeredQuestions,
+    createdQuestions: createdQuestions,
+    score: score,
     user: user,
     userId: user.id
   }
