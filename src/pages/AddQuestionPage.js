@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
-import { generateQuestion } from '../utils/helpers';
+import { generateQuestion } from '../utils/questionHelper';
 import { addQuestion } from '../actions/questions'
 
 class AddQuestionPage extends Component {
@@ -75,7 +75,7 @@ class AddQuestionPage extends Component {
   }
 
 }
-function mapStateToProps({ users, authedUser }) {
+function mapStateToProps({ authedUser }) {
   return {
     authedUser: authedUser
   }

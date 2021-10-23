@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
-import { formatQuestionObjectList } from '../utils/helpers'
 import { formatUserList, getUser } from '../utils/userHelper'
-
+import { formatQuestionList } from '../utils/questionHelper'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Question from "../components/Question/Question"
@@ -25,8 +24,7 @@ class MainPage extends Component {
                   <div className="row mt-5">
                     <div className="col-12">
                       {
-                        formatQuestionObjectList(
-                          this.props.questions)
+                        this.props.questions
                           .filter(x => (!x.optionOne.votes.includes(this.props.authedUser) && !x.optionTwo.votes.includes(this.props.authedUser)))
                           .map(
                             question => {
@@ -43,8 +41,7 @@ class MainPage extends Component {
                 <TabPanel>
                   <div className="row mt-5 mb-3">
                     {
-                      formatQuestionObjectList(
-                        this.props.questions)
+                      this.props.questions
                         .filter(x => (x.optionOne.votes.includes(this.props.authedUser) || x.optionTwo.votes.includes(this.props.authedUser)))
                         .map(
                           question => {
@@ -71,7 +68,7 @@ function mapStateToProps({ questions, users, authedUser }) {
   return {
     users: formatUserList(users),
     authedUser: authedUser,
-    questions: questions
+    questions: formatQuestionList(questions)
   }
 }
 export default withRouter(connect(mapStateToProps)(MainPage));

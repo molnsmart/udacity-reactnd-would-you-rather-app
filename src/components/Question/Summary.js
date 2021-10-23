@@ -28,11 +28,11 @@ class Summary extends Component {
         <div className="row">
           <div className="col-3"></div>
           <div className="col-6">
-            <div class="card mt-3">
-              <div class="card-header">
+            <div className="card mt-3">
+              <div className="card-header">
                 <h6>Asked by {this.props.User.name}</h6>
               </div>
-              <div class="card-body">
+              <div className="card-body">
                 <div className="row">
                   <div className="col-4 border-right">
                     <div className="summary-avatar">
@@ -40,14 +40,14 @@ class Summary extends Component {
                     </div>
                   </div>
                   <div className="col-8">
-                    <h3 class="card-title">Results:</h3>
+                    <h3 className="card-title">Results:</h3>
                     <div className="row">
                       <div className="col-12">
                         {optionOneHasAnswered === true
                           ?
                           <div className="optionOne border p-3 user-vote">
                             <div>
-                              <div class="circle"><p className="mt-2 d-inline-block">your vote</p></div>
+                              <div className="circle"><p className="mt-2 d-inline-block">your vote</p></div>
                               <h6>{this.props.Question.optionOne.text}?</h6>
                               <div className="progress mt-3">
                                 <div className="progress-bar bg-success" style={{ width: optionOneVotesPercent + '%' }} role="progressbar" aria-valuenow={optionOneVotesPercent} aria-valuemin="0" aria-valuemax="100">{optionOneVotesPercent}%</div>
@@ -70,7 +70,7 @@ class Summary extends Component {
                           ?
                           <div className="optionOne border p-3 user-vote">
                             <div>
-                              <div class="circle"><p className="mt-2 d-inline-block">your vote</p></div>
+                              <div className="circle"><p className="mt-2 d-inline-block">your vote</p></div>
                               <h6>{this.props.Question.optionTwo.text}?</h6>
                               <div className="progress mt-3">
                                 <div className="progress-bar bg-success" style={{ width: optionTwoVotesPercent + '%' }} role="progressbar" aria-valuenow={optionTwoVotesPercent} aria-valuemin="0" aria-valuemax="100">{optionTwoVotesPercent}%</div>

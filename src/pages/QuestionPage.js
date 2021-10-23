@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
-import { findQuestion } from '../utils/helpers'
+import { formatQuestionList, findQuestion } from '../utils/questionHelper'
 import Summary from '../components/Question/Summary';
 import Answer from '../components/Question/Answer';
 import { formatUserList, getUser } from '../utils/userHelper'
@@ -51,7 +51,7 @@ function mapStateToProps({ questions, authedUser, users }) {
   return {
     authedUser: authedUser,
     users: formatUserList(users),
-    questions: questions
+    questions: formatQuestionList(questions)
   }
 }
 export default withRouter(connect(mapStateToProps)(QuestionPage));
