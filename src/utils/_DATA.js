@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: 'https://img.tradera.net/images/596/314487596_8f1b27c6-c493-4655-8da2-b579217e1980.jpg',
+    avatarURL: 'https://i.redd.it/58vf1176uk251.png',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -12,8 +12,8 @@ let users = {
     questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
   tylermcginnis: {
-    id: 'tylermcginnis',
-    name: 'Tyler McGinnis',
+    id: 'stallone',
+    name: 'Sylvester Stallone',
     avatarURL: 'https://img.tradera.net/images/596/314487596_8f1b27c6-c493-4655-8da2-b579217e1980.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
@@ -22,9 +22,9 @@ let users = {
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
   johndoe: {
-    id: 'johndoe',
-    name: 'John Doe',
-    avatarURL: 'https://img.tradera.net/images/596/314487596_8f1b27c6-c493-4655-8da2-b579217e1980.jpg',
+    id: 'johnbravo',
+    name: 'Johnny Bravo',
+    avatarURL: 'https://pbs.twimg.com/profile_images/814888133703692288/sDyeduMi_400x400.jpg',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -35,7 +35,7 @@ let users = {
   tomvad: {
     id: 'tomvad',
     name: 'Tommy Vadman',
-    avatarURL: 'https://img.tradera.net/images/596/314487596_8f1b27c6-c493-4655-8da2-b579217e1980.jpg',
+    avatarURL: 'https://pbs.twimg.com/profile_images/700058750929997824/dJ93HRja.jpg',
     answers: {
     },
     questions: []
@@ -58,14 +58,14 @@ let questions = {
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
-    author: 'johndoe',
+    author: 'stallone',
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
       text: 'become a superhero',
     },
     optionTwo: {
-      votes: ['johndoe', 'sarahedo'],
+      votes: ['stallone', 'sarahedo'],
       text: 'become a supervillain'
     }
   },
@@ -84,7 +84,7 @@ let questions = {
   },
   "loxhs1bqm25b708cmbf3g": {
     id: 'loxhs1bqm25b708cmbf3g',
-    author: 'tylermcginnis',
+    author: 'stallone',
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
@@ -97,27 +97,27 @@ let questions = {
   },
   "vthrdm985a262al8qx3do": {
     id: 'vthrdm985a262al8qx3do',
-    author: 'tylermcginnis',
+    author: 'tomvad',
     timestamp: 1489579767190,
     optionOne: {
-      votes: ['tylermcginnis'],
+      votes: ['stallone'],
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['johndoe'],
+      votes: ['tomvad'],
       text: 'have your best friend find $500'
     }
   },
   "xj352vofupe1dqz9emx13r": {
     id: 'xj352vofupe1dqz9emx13r',
-    author: 'johndoe',
+    author: 'stallone',
     timestamp: 1493579767190,
     optionOne: {
-      votes: ['johndoe'],
+      votes: ['stallone'],
       text: 'write JavaScript',
     },
     optionTwo: {
-      votes: ['tylermcginnis'],
+      votes: ['stallone'],
       text: 'write Swift'
     }
   },
