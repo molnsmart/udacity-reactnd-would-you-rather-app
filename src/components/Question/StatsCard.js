@@ -73,7 +73,7 @@ class StatsCard extends Component {
                       </div>
                       <div className="col-2"></div>
                       <div className="col-10 ml-4 border text-center p-3">
-                        <div className="circle-score"><p className="mt-2 d-inline-block">{this.props.Stats.score}</p></div>
+                        <div className="circle-score ml-3"><p className="mt-2 d-inline-block">{this.props.Stats.score}</p></div>
                       </div>
                       <div className="col-2"></div>
                     </div>
