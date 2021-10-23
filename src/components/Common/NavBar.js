@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatUserObjectList } from '../../utils/helpers'
+import { formatUserList } from '../../utils/userHelper'
 import { withRouter } from "react-router";
 import Avatar from '../User/Avatar';
 import { NavLink } from 'react-router-dom';
 class NavBar extends Component {
   getUser() {
     if (this.props.authedUser !== null) {
-      let users = formatUserObjectList(this.props.users)
-      return users.filter(u => u.id === this.props.authedUser)[0]
+      return this.props.users.filter(u => u.id === this.props.authedUser)[0]
     }
     return null
   }
@@ -61,7 +60,7 @@ class NavBar extends Component {
 function mapStateToProps({ authedUser, users }) {
   return {
     authedUser: authedUser,
-    users: users
+    users: formatUserList(users)
   }
 }
 

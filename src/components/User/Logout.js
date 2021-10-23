@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { removeAuthedUser } from '../../actions/authedUser'
-import { removeUserIdFromLocalStorage } from '../../utils/helpers'
+import { removeUserIdFromLocalStorage } from '../../utils/signinHelper'
 import { withRouter } from "react-router";
 class LogOut extends Component {
   logout = (id) => {

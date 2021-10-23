@@ -1,14 +1,14 @@
-const USER_ID_LOCAL_STORAGE = "molnsmartUserId"
+// const USER_ID_LOCAL_STORAGE = "molnsmartUserId"
 
-export function formatUserObjectList(users) {
-  let userList = []
-  if (Object.keys(users).length !== 0) {
-    Object.values(users).forEach(val => {
-      userList.push(val)
-    });
-  }
-  return userList
-}
+// export function formatUserObjectList(users) {
+//   let userList = []
+//   if (Object.keys(users).length !== 0) {
+//     Object.values(users).forEach(val => {
+//       userList.push(val)
+//     });
+//   }
+//   return userList
+// }
 export function formatQuestionObjectList(questions) {
   let questionList = []
   if (Object.keys(questions).length !== 0) {
@@ -18,10 +18,7 @@ export function formatQuestionObjectList(questions) {
   }
   return questionList
 }
-export function getUser(userList, id) {
-  let uList = formatUserObjectList(userList)
-  return uList.filter(u => u.id === id)[0]
-}
+
 export function findQuestion(questions, id) {
   if (questions !== undefined && questions !== null && id !== undefined) {
     let questionList = formatQuestionObjectList(questions)
@@ -29,21 +26,7 @@ export function findQuestion(questions, id) {
   }
   return null;
 }
-export function removeUserIdFromLocalStorage() {
-  localStorage.removeItem(USER_ID_LOCAL_STORAGE)
-}
-export function setUserIdLocalStorage(id) {
-  localStorage.setItem(USER_ID_LOCAL_STORAGE, id)
-}
-export function userIdFromLocalStorage() {
-  return localStorage.getItem(USER_ID_LOCAL_STORAGE)
-}
-export function userIsLoggedInFromLocalStorage() {
-  if (localStorage.getItem(USER_ID_LOCAL_STORAGE) === null) {
-    return false;
-  }
-  return true;
-}
+
 
 export function formatUserStats(user, questionList) {
   let userQuestionList = formatQuestionObjectList(questionList).filter(q => q.author === user.id || q.optionOne.votes.includes(user.id) || q.optionTwo.votes.includes(user.id))

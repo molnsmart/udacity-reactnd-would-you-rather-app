@@ -2,7 +2,7 @@ import { getInitialData } from '../utils/api'
 import { receiveUsers } from './users'
 import { receiveQuestions } from './questions'
 import { setAuthedUser } from '../actions/authedUser'
-import { userIdFromLocalStorage, userIsLoggedInFromLocalStorage } from '../utils/helpers'
+import { userIdFromLocalStorage, userIsLoggedInFromLocalStorage } from '../utils/signinHelper'
 
 
 export function handleInitialData() {

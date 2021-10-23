@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter } from "react-router";
 import { findQuestion } from '../utils/helpers'
 import Summary from '../components/Question/Summary';
-import { getUser } from '../utils/helpers'
 import Answer from '../components/Question/Answer';
+import { formatUserList, getUser } from '../utils/userHelper'
 
 class QuestionPage extends Component {
 
@@ -50,7 +50,7 @@ class QuestionPage extends Component {
 function mapStateToProps({ questions, authedUser, users }) {
   return {
     authedUser: authedUser,
-    users: users,
+    users: formatUserList(users),
     questions: questions
   }
 }

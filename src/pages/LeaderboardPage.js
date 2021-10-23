@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatUserObjectList, formatUserStats } from '../utils/helpers'
+import { formatUserStats } from '../utils/helpers'
+import { formatUserList } from '../utils/userHelper'
 import { withRouter } from "react-router";
 import StatsCard from '../components/Question/StatsCard'
 class LeaderboardPage extends Component {
@@ -38,7 +39,7 @@ class LeaderboardPage extends Component {
 }
 function mapStateToProps({ questions, users, authedUser }) {
   return {
-    users: formatUserObjectList(users),
+    users: formatUserList(users),
     authedUser: authedUser,
     questions: questions
   }

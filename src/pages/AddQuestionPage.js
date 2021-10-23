@@ -39,10 +39,10 @@ class AddQuestionPage extends Component {
           <div className="col-2"></div>
           <div className="col-8 border">
             <div className="row">
-              <div class="col-12 text-center border-bottom">
+              <div className="col-12 text-center border-bottom">
                 <h1 className="p-2">Create new question</h1>
               </div>
-              <div class="col-12 mb-4">
+              <div className="col-12 mb-4">
                 <p className="mt-3">Complete the question</p>
                 <h3 className="mt-4 mb-3">Would you rather ...</h3>
                 <textarea placeholder="What's happening?" value={this.state.optionOne} onChange={this.updateOptionOne} className='w-100 new-question-textarea' maxLength={280} />
@@ -61,11 +61,10 @@ class AddQuestionPage extends Component {
                 <div className="col-auto pb-4 pt-4">
                 </div>
                 <div className="col-12">
-                  <button type="submit" class="btn btn-success mb-2 w-100" onClick={this.handleSubmit}>Submit</button>
+                  <button type="submit" className="btn btn-success mb-2 w-100" onClick={this.handleSubmit}>Submit</button>
                 </div>
               </div>
             </div>
-
           </div>
           <div className="col-2"></div>
 

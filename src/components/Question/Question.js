@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Avatar from '../User/Avatar'
 import { NavLink } from 'react-router-dom';
 class Question extends Component {
+
+  // Return a preview of Text with random word count.
+  // input: "this is a question"
+  // returns ..this.. or it could return ..this is a...
   previewText(text) {
     let length = text.split(" ").length;
     let max = Math.floor(Math.random() * length);

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
-import { formatUserObjectList, getUser, formatQuestionObjectList } from '../utils/helpers'
+import { formatQuestionObjectList } from '../utils/helpers'
+import { formatUserList, getUser } from '../utils/userHelper'
+
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Question from "../components/Question/Question"
@@ -48,7 +50,7 @@ class MainPage extends Component {
                           question => {
                             let user = getUser(this.props.users, question.author)
                             return (
-                              <Question Question={question} Author={user}></Question>
+                              <Question key={question.id} Question={question} Author={user}></Question>
                             )
                           }
                         )
@@ -67,7 +69,7 @@ class MainPage extends Component {
 }
 function mapStateToProps({ questions, users, authedUser }) {
   return {
-    users: formatUserObjectList(users),
+    users: formatUserList(users),
     authedUser: authedUser,
     questions: questions
   }
