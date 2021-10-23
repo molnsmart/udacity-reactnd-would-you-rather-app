@@ -16,7 +16,7 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-light bg-light">
-        <ul className="nav nav-tabs justify-content-center">
+        <ul className="nav nav-tabs justify-content-right w-70">
           <li className="nav-item">
             <NavLink className="nav-link" to="/" exact={true}>Home</NavLink>
           </li>
@@ -26,8 +26,10 @@ class NavBar extends Component {
           <li className="nav-item">
             <NavLink className="nav-link" to="/leaderboard">Leaderboard</NavLink>
           </li>
+          <li className="nav-item">
+          </li>
         </ul>
-        <div>
+        <div className="user-item">
           {this.getUser() !== null
             ?
             <ul className="nav">
