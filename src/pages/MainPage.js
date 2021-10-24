@@ -9,6 +9,11 @@ import Question from "../components/Question/Question"
 class MainPage extends Component {
 
   render() {
+    let sorted = this.props.questions
+      .filter(x => (!x.optionOne.votes.includes(this.props.authedUser) && !x.optionTwo.votes.includes(this.props.authedUser)))
+      .sort((a, b) => b.timestamp - a.timestamp).map(x => {
+        console.log(x)
+      })
     return (
       <div className="container">
         <div className="row mt-3">
@@ -26,6 +31,7 @@ class MainPage extends Component {
                       {
                         this.props.questions
                           .filter(x => (!x.optionOne.votes.includes(this.props.authedUser) && !x.optionTwo.votes.includes(this.props.authedUser)))
+                          .sort((a, b) => b.timestamp - a.timestamp)
                           .map(
                             question => {
                               let user = getUser(this.props.users, question.author)
@@ -43,6 +49,7 @@ class MainPage extends Component {
                     {
                       this.props.questions
                         .filter(x => (x.optionOne.votes.includes(this.props.authedUser) || x.optionTwo.votes.includes(this.props.authedUser)))
+                        .sort((a, b) => b.timestamp - a.timestamp)
                         .map(
                           question => {
                             let user = getUser(this.props.users, question.author)
