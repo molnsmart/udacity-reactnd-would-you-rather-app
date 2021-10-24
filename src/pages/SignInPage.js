@@ -1,38 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { formatUserList } from '../utils/userHelper'
 import { withRouter } from "react-router";
 import LogOut from "../components/User/Logout"
 import SignIn from '../components/User/SignIn'
-class SignInPage extends Component {
 
-  isAuthenticated() {
-    if (this.props.authedUser !== null) {
-      return true;
-    }
-    return false;
+function isAuthenticated(props) {
+  if (props.authedUser !== null) {
+    return true;
   }
-  getUser(id) {
-    return this.props.users.filter(u => u.id === id)[0]
+  return false;
+}
+function getUser(id, props) {
+  return props.users.filter(u => u.id === id)[0]
+}
+
+function SignInPage(props) {
+  if (isAuthenticated(props)) {
+    return (
+      <LogOut User={getUser(props.authedUser, props)} Dispatch={props.dispatch} History={props.history}></LogOut>
+    )
   }
-
-  render() {
-    if (this.isAuthenticated()) {
-      return (
-        <LogOut User={this.getUser(this.props.authedUser)} Dispatch={this.props.dispatch} History={this.props.history}></LogOut>
-      )
-    }
-    if (this.props.users.length > 0) {
-      return (
-        <SignIn User={this.getUser(this.props.authedUser)} UserList={this.props.users} Dispatch={this.props.dispatch}></SignIn>
-      )
-    } else {
-      return null
-    }
-
+  if (props.users.length > 0) {
+    return (
+      <SignIn User={getUser(props.authedUser, props)} UserList={props.users} Dispatch={props.dispatch}></SignIn>
+    )
+  } else {
+    return null
   }
 
 }
+
 function mapStateToProps({ users, authedUser }) {
   return {
     users: formatUserList(users),
