@@ -18,8 +18,9 @@ class SignInPage extends Component {
 
   render() {
     if (this.isAuthenticated()) {
+      console.log(this.props)
       return (
-        <LogOut User={this.getUser(this.props.authedUser)} Dispatch={this.props.dispatch}></LogOut>
+        <LogOut User={this.getUser(this.props.authedUser)} Dispatch={this.props.dispatch} History={this.props.history}></LogOut>
       )
     }
     if (this.props.users.length > 0) {
