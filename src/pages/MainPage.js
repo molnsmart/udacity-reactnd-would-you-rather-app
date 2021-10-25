@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
 import { formatUserList, getUser } from '../utils/userHelper'
@@ -6,46 +6,30 @@ import { formatQuestionList } from '../utils/questionHelper'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Question from "../components/Question/Question"
-class MainPage extends Component {
 
-  render() {
-    return (
-      <div className="container">
-        <div className="row mt-3">
-          <div className="col-3"></div>
-          <div className="col-6 mt-0">
-            <Tabs>
-              <TabList>
-                <Tab><h5 className="text-center">Unanswered Questions</h5></Tab>
-                <Tab><h5 className="text-center">Answered Questions</h5></Tab>
-              </TabList>
-              <div className="col-12 border">
-                <TabPanel>
-                  <div className="row mt-5">
-                    <div className="col-12">
-                      {
-                        this.props.questions
-                          .filter(x => (!x.optionOne.votes.includes(this.props.authedUser) && !x.optionTwo.votes.includes(this.props.authedUser)))
-                          .map(
-                            question => {
-                              let user = getUser(this.props.users, question.author)
-                              return (
-                                <Question key={question.id} Question={question} Author={user}></Question>
-                              )
-                            }
-                          )
-                      }
-                    </div>
-                  </div>
-                </TabPanel>
-                <TabPanel>
-                  <div className="row mt-5 mb-3">
+
+function MainPage(props) {
+  return (
+    <div className="container">
+      <div className="row mt-3">
+        <div className="col-3"></div>
+        <div className="col-6 mt-0">
+          <Tabs>
+            <TabList>
+              <Tab><h5 className="text-center">Unanswered Questions</h5></Tab>
+              <Tab><h5 className="text-center">Answered Questions</h5></Tab>
+            </TabList>
+            <div className="col-12 border">
+              <TabPanel>
+                <div className="row mt-5">
+                  <div className="col-12">
                     {
-                      this.props.questions
-                        .filter(x => (x.optionOne.votes.includes(this.props.authedUser) || x.optionTwo.votes.includes(this.props.authedUser)))
+                      props.questions
+                        .filter(x => (!x.optionOne.votes.includes(props.authedUser) && !x.optionTwo.votes.includes(props.authedUser)))
+                        .sort((a, b) => b.timestamp - a.timestamp)
                         .map(
                           question => {
-                            let user = getUser(this.props.users, question.author)
+                            let user = getUser(props.users, question.author)
                             return (
                               <Question key={question.id} Question={question} Author={user}></Question>
                             )
@@ -53,16 +37,32 @@ class MainPage extends Component {
                         )
                     }
                   </div>
-                </TabPanel>
-              </div>
-            </Tabs>
-          </div>
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <div className="row mt-5 mb-3">
+                  {
+                    props.questions
+                      .filter(x => (x.optionOne.votes.includes(props.authedUser) || x.optionTwo.votes.includes(props.authedUser)))
+                      .sort((a, b) => b.timestamp - a.timestamp)
+                      .map(
+                        question => {
+                          let user = getUser(props.users, question.author)
+                          return (
+                            <Question key={question.id} Question={question} Author={user}></Question>
+                          )
+                        }
+                      )
+                  }
+                </div>
+              </TabPanel>
+            </div>
+          </Tabs>
         </div>
-        <div className="col-3"></div>
       </div>
-    )
-  }
-
+      <div className="col-3"></div>
+    </div>
+  )
 }
 function mapStateToProps({ questions, users, authedUser }) {
   return {

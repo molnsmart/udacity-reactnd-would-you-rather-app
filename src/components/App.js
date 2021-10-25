@@ -15,6 +15,7 @@ import AddQuestionPage from '../pages/AddQuestionPage';
 import QuestionPage from '../pages/QuestionPage';
 import { Fragment } from 'react';
 import LeaderboardPage from '../pages/LeaderboardPage';
+import { formatUserList } from '../utils/userHelper'
 
 
 
@@ -39,7 +40,7 @@ class App extends Component {
       <div className="app">
         <Router history={history}>
           <Fragment>
-            <NavBar />
+            <NavBar props={this.props} />
             <Switch>
               <Route exact path="/">
                 <MainPage></MainPage>
@@ -69,7 +70,8 @@ class App extends Component {
 }
 function mapStateToProps({ users, authedUser }) {
   return {
-    authedUser: authedUser
+    authedUser: authedUser,
+    users: formatUserList(users),
   }
 }
 
